@@ -1,0 +1,55 @@
+---
+title: "Week 1 Homework"
+author: "MB Hunzaker"
+date: "October 6, 2015"
+output: html_document
+---
+Homework 
+
+1. Create an RMarkdown file for your work
+2. Look at the data again 
+3. Plot lifeExp on the x-axis and gepPercap on the y-axis
+4. Plot pop on the x-axis and gdpPercap in the y-axis
+5. Plot year on the x-axis and any continuous variable on the y-axis
+
+Importing Needed Libraries
+```{r, warning = FALSE}
+library(ggplot2)
+library(RCurl) #other method gave an error for me
+```
+
+
+Getting Data
+```{r}
+x <- getURL("https://raw.githubusercontent.com/socviz/soc880/master/data/gapminder.csv")
+data <- read.csv(text = x)
+```
+
+Plot 1
+```{r}
+#Generate an object containing a plot
+p <- ggplot(data,
+            aes( x = lifeExp,
+                 y = gdpPercap))
+
+# Make a scatterplot (not yet assigned to an object)
+p + geom_point()
+```
+
+Plot 2
+```{r}
+p2 <-  ggplot(data,
+            aes( x = pop,
+                 y = gdpPercap))
+p2 + geom_point()
+```
+
+Plot 3
+```{r}
+p3 <- ggplot(data,
+            aes( x = year,
+                 y = lifeExp))
+p3 + geom_point()
+```
+
+
